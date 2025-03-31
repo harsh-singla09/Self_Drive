@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Login - Self-Drive Car Rental</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="client-signup.html">
+    <style>
+        /* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('images/interior.jpeg'); /* Background similar to home page */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for Login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Light background with transparency */
+    padding: 40px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Login Heading */
+.login-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Input Fields */
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+/* Input Focus Effect */
+input:focus {
+    outline: none;
+    border-color: #ff7300;
+    box-shadow: 0 0 8px rgba(255, 115, 0, 0.5);
+}
+
+/* Login Button */
+.button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #ff7300, #ff5e00);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button Hover Effect */
+.button:hover {
+    background: linear-gradient(90deg, #ff5e00, #e94e00);
+}
+
+/* Register Link */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Link Styling */
+p a {
+    color: #ff7300;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Link Hover Effect */
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Animation for smooth load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+li a {
+            background: orange;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Client Login</h1>
+        <form action="location.html" method="POST">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="E mail"  name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" placeholder="Password" id="password" name="password" required>
+            </div>
+            <li><a href="location.html">LOGIN</a></li>
+        </form>
+        <p>Don't have an account? <a href="client-signup.html">Register here</a></p>
+    </div>
+    <script>
+        function redirectToHome() {
+            // Add logic to validate credentials if needed
+            window.location.href = 'book-car.html'; // Redirect to homepage after login
+        }
+    </script>
+</body>
+</html>

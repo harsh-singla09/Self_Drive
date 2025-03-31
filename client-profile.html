@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Profile - Moving Wheel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Profile Page Styles */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+
+.profile-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    width: 400px;
+    margin: 80px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Heading */
+.profile-container h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Button Style */
+button {
+    width: 100%;
+    background: linear-gradient(90deg, #4a90e2, #e94e77);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #e94e77, #4a90e2);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Active Link Styling */
+nav ul li .active {
+    color: #4a90e2;
+    font-weight: bold;
+    border-bottom: 2px solid #4a90e2;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="logo">Moving Wheel</h1>
+            <nav>
+                <ul>
+                    <li><a href="client-dashboard.html">Dashboard</a></li>
+                    <li><a href="client-profile.html" class="active">Profile</a></li>
+                    <li><a href="client-bookings.html">My Bookings</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="profile-container">
+        <h2>Client Profile</h2>
+
+        <form id="profileForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="user name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="xyz@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="********" required>
+            </div>
+
+            <button type="submit" onclick="updateProfile()">Update Profile</button>
+        </form>
+    </section>
+
+    <script>
+        // Update Profile Function
+function updateProfile() {
+    event.preventDefault(); // Prevent form submission
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (fullName === "" || email === "" || phone === "" || password === "") {
+        alert("Please fill all the fields!");
+        return;
+    }
+
+    // Simulating profile update success
+    alert("Profile updated successfully!");
+    window.location.href = "client-dashboard.html";
+}
+
+    </script>
+</body>
+
+</html>

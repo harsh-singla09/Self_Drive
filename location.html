@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Location - Moving Wheel</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        /* Map Section Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: linear-gradient(90deg, #4a90e2, #e94e77);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        #proceed-btn {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Select Your Location to Check Availability</h2>
+        <div id="map"></div>
+        <button onclick="getUserLocation()">Get Current Location</button>
+        <button id="proceed-btn" onclick="proceedToDashboard()">Proceed</button>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        // Initialize map
+        let map = L.map('map').setView([28.6139, 77.2090], 12); // Default to Delhi
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Marker for default location
+        let marker = L.marker([28.6139, 77.2090]).addTo(map)
+            .bindPopup('Default Location: Delhi')
+            .openPopup();
+
+        // List of serviceable locations
+        const serviceableLocations = [
+            { name: "Delhi", lat: 28.6139, lng: 77.2090 },
+            { name: "Mumbai", lat: 19.0760, lng: 72.8777 },
+            { name: "Bangalore", lat: 12.9716, lng: 77.5946 },
+            { name: "Chandigarh", lat: 30.7333, lng: 76.7794 },
+            { name: "Saini Majra", lat: 30.7046, lng: 76.7179 }
+        ];
+
+        let isLocationValid = false; // Flag to check if the location is valid
+
+        // Get user's real-time location and validate
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+
+                        // Update map and marker
+                        map.setView([lat, lng], 14);
+                        marker.setLatLng([lat, lng])
+                            .bindPopup('You are here!')
+                            .openPopup();
+
+                        // Check if location is serviceable
+                        if (isServiceAvailable(lat, lng)) {
+                            // Show "Proceed" button if service is available
+                            isLocationValid = true;
+                            document.getElementById('proceed-btn').style.display = 'block';
+                            alert("✅ Service available! Click Proceed to continue.");
+                        } else {
+                            // Hide "Proceed" button if service not available
+                            isLocationValid = false;
+                            document.getElementById('proceed-btn').style.display = 'none';
+                            alert("🚫 Service not available in your selected location.");
+                        }
+                    },
+                    (error) => {
+                        alert("Error: Unable to retrieve your location.");
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        // Check if the selected location is serviceable
+        function isServiceAvailable(lat, lng) {
+            for (let i = 0; i < serviceableLocations.length; i++) {
+                const loc = serviceableLocations[i];
+                const distance = getDistance(lat, lng, loc.lat, loc.lng);
+                // Check if within 10 km radius of a serviceable location
+                if (distance <= 10) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Calculate distance between two points using Haversine formula
+        function getDistance(lat1, lng1, lat2, lng2) {
+            const R = 6371; // Earth's radius in km
+            const dLat = (lat2 - lat1) * (Math.PI / 180);
+            const dLng = (lng2 - lng1) * (Math.PI / 180);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c;
+            return distance; // Distance in km
+        }
+
+        // Proceed to Client Dashboard if location is valid
+        function proceedToDashboard() {
+            if (isLocationValid) {
+                window.location.href = "client-dashboard.html";
+            } else {
+                alert("❌ Please select a valid serviceable location before proceeding.");
+            }
+        }
+    </script>
+</body>
+
+</html>

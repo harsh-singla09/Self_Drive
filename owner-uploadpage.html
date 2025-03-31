@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Car Upload - Moving Wheel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            /* Set the dashboard image as background */
+            background-image: url('./images/dashboard.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            /* Add a dark overlay to reduce brightness */
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Overlay to reduce brightness */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* 40% darkness */
+            z-index: 1;
+        }
+
+        /* Upload container on top of the overlay */
+        .upload-container {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Heading */
+        .upload-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .upload-container p {
+            color: #333;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        /* Input Group */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* File Input */
+        .input-group input[type="file"] {
+            padding: 5px;
+        }
+
+        /* Button */
+        .btn {
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* Success Message */
+        .success-message {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upload-container">
+        <h2>Upload Your Car Details</h2>
+        <p>join us!! and enhance your business.</p>
+        <form action="upload-success.html" method="POST" enctype="multipart/form-data" id="carUploadForm">
+            <!-- Car Name -->
+            <div class="input-group">
+                <label for="carName">Car Name</label>
+                <input type="text" id="carName" name="carName" placeholder="Enter Car Name" required>
+            </div>
+
+            <!-- Car Model -->
+            <div class="input-group">
+                <label for="carModel">Car Model</label>
+                <input type="text" id="carModel" name="carModel" placeholder="Enter Car Model" required>
+            </div>
+
+            <!-- Car Price Per Day -->
+            <div class="input-group">
+                <label for="carPrice">Price Per Day (₹)</label>
+                <input type="number" id="carPrice" name="carPrice" placeholder="Enter Price" required>
+            </div>
+
+            <!-- Car Type -->
+            <div class="input-group">
+                <label for="carType">Car Type</label>
+                <select id="carType" name="carType" required>
+                    <option value="" disabled selected>Select Car Type</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Luxury">Luxury</option>
+                </select>
+            </div>
+
+            <!-- Car Image Upload -->
+            <div class="input-group">
+                <label for="carImage">Upload Car Image</label>
+                <input type="file" id="carImage" name="carImage" accept="image/*" required>
+            </div>
+
+            <!-- Upload Button -->
+            <button type="submit" class="btn">Upload Car</button>
+        </form>
+    </div>
+
+    <script src="upload.js"></script>
+</body>
+
+</html>

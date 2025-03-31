@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental - Moving Wheel</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: -100px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff9800;
+        }
+
+        /* Container for features */
+        .features {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 boxes in one row */
+            gap: 25px;
+            text-align: center;
+        }
+
+        /* Individual feature box */
+        .feature {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            height: 240px;
+            /* Increased box height */
+        }
+
+        /* Car image */
+        .feature img {
+            width: 140px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        /* Content inside the box */
+        .feature-content {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        /* Car title */
+        .feature h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Car description */
+        .feature p {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Review section */
+        .review {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #ff9800;
+        }
+
+        /* Book Now Button */
+        .book-btn {
+            margin-top: 10px;
+            background-color: #ff9800;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background-color: #e68900;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: repeat(1, 1fr);
+                /* 1 box per row for mobile */
+            }
+
+            .feature {
+                height: auto;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature img {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <header>
+        <div class="navbar">
+            <h1 class="logo">Moving Wheel</h1>
+            <nav>
+                <ul>
+                    <li><a href="client-dashboard.html">Dashboard</a></li>
+                    <li><a href="client-profile.html">Profile</a></li>
+                    <li><a href="client-bookings.html">My Bookings</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Heading -->
+    <h1 style="text-align: center; margin-top: 20px; color: #333;">🚗 Available Cars for Rent</h1>
+
+    <!-- Feature Section -->
+    <div class="features">
+
+        <!-- Car 1 -->
+        <div class="feature">
+            <img src="/images/swift.png" alt="Swift Dzire">
+            <div class="feature-content">
+                <h3>Swift Dzire</h3>
+                <p>₹1500/day - Best for city rides and long-distance trips.</p>
+                <div class="review">⭐️⭐️⭐️⭐️⭐️ (4.8/5) - "Great comfort and mileage!"</div>
+                <button class="book-btn" onclick="bookCar('Swift Dzire')">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Car 2 -->
+        <div class="feature">
+            <img src="/images/i20.png" alt="Hyundai i20">
+            <div class="feature-content">
+                <h3>Hyundai i20</h3>
+                <p>₹1800/day - Premium hatchback with high-tech features.</p>
+                <div class="review">⭐️⭐️⭐️⭐️ (4.5/5) - "Smooth driving and stylish look!"</div>
+                <button class="book-btn" onclick="bookCar('Hyundai i20')">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Car 3 -->
+        <div class="feature">
+            <img src="/images/baleno.png" alt="Maruti Baleno">
+            <div class="feature-content">
+                <h3>Maruti Baleno</h3>
+                <p>₹1700/day - Spacious and comfortable for long trips.</p>
+                <div class="review">⭐️⭐️⭐️⭐️ (4.6/5) - "Best mileage and space!"</div>
+                <button class="book-btn" onclick="bookCar('Maruti Baleno')">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Car 4 -->
+        <div class="feature">
+            <img src="/images/scorpio-removebg-preview.png" alt="Mahindra Scorpio">
+            <div class="feature-content">
+                <h3>Mahindra Scorpio</h3>
+                <p>₹2500/day - Ideal for off-road and family trips.</p>
+                <div class="review">⭐️⭐️⭐️⭐️ (4.7/5) - "Powerful and reliable on rough terrain!"</div>
+                <button class="book-btn" onclick="bookCar('Mahindra Scorpio')">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Car 5 -->
+        <div class="feature">
+            <img src="/images/creta.png" alt="Hyundai Creta">
+            <div class="feature-content">
+                <h3>Hyundai Creta</h3>
+                <p>₹2200/day - SUV with advanced safety and features.</p>
+                <div class="review">⭐️⭐️⭐️⭐️⭐️ (4.9/5) - "Spacious, comfortable, and modern!"</div>
+                <button class="book-btn" onclick="bookCar('Hyundai Creta')">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Car 6 -->
+        <div class="feature">
+            <img src="/images/scorpioN-removebg-preview.png" alt="Mahindra Scorpio N">
+            <div class="feature-content">
+                <h3>Mahindra Scorpio N</h3>
+                <p>₹3000/day - Best for family/group travels.</p>
+                <div class="review">⭐️⭐️⭐️⭐️ (4.8/5) - "Perfect for long road trips!"</div>
+                <button class="book-btn" onclick="bookCar('Mahindra Scorpio N')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript to handle booking -->
+    <script>
+        function bookCar(carName) {
+            alert('You have selected ' + carName + ' for booking. Redirecting to the booking page...');
+            window.location.href = 'car-booking.html?car=' + encodeURIComponent(carName);
+        }
+    </script>
+
+</body>
+
+</html>

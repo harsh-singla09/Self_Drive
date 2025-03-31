@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Signup-Self-Drive Car Rental</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('images/interior.jpeg'); /* Background from homepage */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for Signup */
+.signup-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Light background with transparency */
+    padding: 40px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Signup Heading */
+.signup-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Input Fields */
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+/* Input Focus Effect */
+input:focus {
+    outline: none;
+    border-color: #ff7300;
+    box-shadow: 0 0 8px rgba(255, 115, 0, 0.5);
+}
+
+/* Signup Button */
+.button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #ff7300, #ff5e00);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button Hover Effect */
+.button:hover {
+    background: linear-gradient(90deg, #ff5e00, #e94e00);
+}
+
+/* Already have an account link */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Link Styling */
+p a {
+    color: #ff7300;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Link Hover Effect */
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Animation for smooth load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Client Signup</h1>
+        <form action="client-signup.html" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" placeholder="Name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="Email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="Confirm-password">Confirm Password:</label>
+                <input type="password" placeholder="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="button">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="client-login.html">Login here</a></p>
+    </div>
+</body>
+</html>
